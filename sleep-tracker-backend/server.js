@@ -7,7 +7,7 @@ const session = require("express-session");
 const app = express();
 
 // ✅ Allow requests from frontend on both ports
-const allowedOrigins = ["http://localhost:8080", "http://localhost:8086" ,"https://sleeptracker-frontend.vercel.app"];
+const allowedOrigins = ["http://localhost:8080", "http://localhost:8086" ,"https://sleeptracker-projects-frontend.vercel.app"];
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -27,9 +27,9 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    sameSite: 'lax', // Important for CORS
-    secure: false    // set to true if using HTTPS
-  }
+  sameSite: "none",   // required for cross-site cookies
+  secure: true        // must be true for HTTPS
+}
 }));
 
 // ✅ MongoDB connection
