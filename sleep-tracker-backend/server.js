@@ -7,7 +7,7 @@ const session = require("express-session");
 const app = express();
 
 // ✅ Allow requests from frontend on both ports
-const allowedOrigins = ["http://localhost:8080", "http://localhost:8086"];
+const allowedOrigins = ["http://localhost:8080", "http://localhost:8086" ,"https://sleeptracker-frontend.vercel.app"];
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -33,7 +33,8 @@ app.use(session({
 }));
 
 // ✅ MongoDB connection
-mongoose.connect("mongodb://localhost:27017/sleep_tracker", {
+const url="mongodb://localhost:27017/sleep_tracker";
+mongoose.connect(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => console.log("✅ MongoDB Connected"))

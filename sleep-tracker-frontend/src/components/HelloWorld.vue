@@ -37,7 +37,7 @@ export default {
   methods: {
     async fetchEntries() {
       try {
-        const res = await axios.get("http://localhost:5000/api/sleep", {
+        const res = await axios.get("https://sleeptracker-projects-backend.vercel.app/api/sleep", {
           withCredentials: true,
         });
         this.entries = res.data;
