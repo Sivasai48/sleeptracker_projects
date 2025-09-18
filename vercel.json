@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "sleep-tracker-frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
+    },
+    {
+      "src": "sleep-tracker-backend/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "sleep-tracker-backend/server.js" },
+    { "src": "/(.*)", "dest": "sleep-tracker-frontend/dist/$1" }
+  ]
+}
